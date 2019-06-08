@@ -7,7 +7,7 @@ You can find the map editor at [rustedit.io](https://www.rustedit.io "rustedit.i
 
 You must have Oxide/uMod installed on your server to make use of the extension
 
-Copy the Oxide.Ext.RustEdit.dll to your /serverroot/RustDedicated_Data/Managed folder and restart your server
+Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed* folder and restart your server
 
 **Features**
 * Establishes IO connections made in the editor
