@@ -14,6 +14,7 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * Populates custom loot containers and ensures they respawn/refresh loot at the rates set in the associated loot profile
 * Creates spawn handlers for all loot containers placed in the editor without a loot profile so they respawn/refresh loot at default rates
 * Creates spawn handlers for all resource entities placed in the editor so manually placed resources will respawn
+* Creates spawn handlers for all junk piles placed in the editor so manually placed junk piles will respawn
 * Populates custom vending machines using the vending profile associated with them in the editor
 * Overrides OceanPatrolPath generation with a custom path created in the editor
 * Creates and manages custom APC paths created in the editor
