@@ -39,3 +39,5 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * rustedit.resource.info - Display a count of all map resources and their status
 * rustedit.loot.respawnall - Force spawn all loot containers pending respawn
 * rustedit.loot.info - Display a count of all map loot containers and their status
+* rustedit.junkpile.respawnall - Force spawn all junk piles pending respawn
+* rustedit.junkpile.info - Display a count of all map junk piles and their status
