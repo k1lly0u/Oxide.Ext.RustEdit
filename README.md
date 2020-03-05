@@ -19,6 +19,7 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * Overrides OceanPatrolPath generation with a custom path created in the editor
 * Creates and manages custom APC paths created in the editor
 * Fixes the spawn point prefab and ensures players will only spawn on them
+* Fixes the rotation of the excavator arm on map placed excavator monuments that have been rotated
 * Updates itself automatically
 
 **Chat Commands**
@@ -42,6 +43,7 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * rustedit.loot.info - Display a count of all map loot containers and their status
 * rustedit.junkpile.respawnall - Force spawn all junk piles pending respawn
 * rustedit.junkpile.info - Display a count of all map junk piles and their status
+* rustedit.desk.populate - Force respawn any keycards missing from keycard desks
 
 **Hooks**
 * (void)RustEdit_NpcSpawned(BasePlayer) - Called when a NPC is spawned via a NPC spawner
