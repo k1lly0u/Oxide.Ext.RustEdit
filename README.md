@@ -54,6 +54,7 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 ```csharp 
 (void)RustEdit_NpcSpawned(BasePlayer) // Called when a NPC is spawned via a NPC spawner
 (void)RustEdit_APCSpawned(BradleyAPC) // Called when a APC is spawned on a custom APC path
+(void)RustEdit_OnMapDataProcessed() // Called after all map data has been processed (IO connections have been made, loot and resources are setup to respawn, NPC and APC spawners ready etc)
 ```
 
 **API**
