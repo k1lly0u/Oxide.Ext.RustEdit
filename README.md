@@ -15,11 +15,16 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * Creates spawn handlers for all loot containers placed in the editor without a loot profile so they respawn/refresh loot at default rates
 * Creates spawn handlers for all resource entities placed in the editor so manually placed resources will respawn
 * Creates spawn handlers for all junk piles placed in the editor so manually placed junk piles will respawn
+* Creates spawn handlers for NPC Spawners placed in the editor
+* Creates spawn handlers for vehicles placed in the editor
 * Populates custom vending machines using the vending profile associated with them in the editor
 * Overrides OceanPatrolPath generation with a custom path created in the editor
 * Creates and manages custom APC paths created in the editor
 * Fixes the spawn point prefab and ensures players will only spawn on them
 * Fixes the rotation of the excavator arm on map placed excavator monuments that have been rotated
+* Ensures desk keycard spawners actually respawn keycards
+* Disables damage and decay on all editor placed entities
+* Prevents deployable entities from killing themselves
 * Updates itself automatically
 
 **Chat Commands**
@@ -47,3 +52,11 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 
 **Hooks**
 * (void)RustEdit_NpcSpawned(BasePlayer) - Called when a NPC is spawned via a NPC spawner
+* (void)RustEdit_APCSpawned(BradleyAPC) - Called when a APC is spawned on a custom APC path
+
+**API**
+* (void)GetAllMapEntities(ref List<BaseEntity> list) - Populates the list with all map placed entities
+* (void)GetMapEntitiesOfType<T>(ref List<T> list) - Populates the list with all map placed entities of the specified type (that inherit from BaseEntity)
+* (void)GetActiveNPCs(ref List<BaseCombatEntity> list) - Populates the list with all active NPC's spawn via NPC Spawners
+* (void)GetActiveAPCs(ref List<BradleyAPC> list) - Populates the list with all active APC's on custom APC paths
+* (void)GetSpawnpoints(ref List<Transform> list) - Populates the list with Transform components of all editor placed spawn points
