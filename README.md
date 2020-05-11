@@ -51,12 +51,16 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * rustedit.desk.populate - Force respawn any keycards missing from keycard desks
 
 **Hooks**
-* (void)RustEdit_NpcSpawned(BasePlayer) - Called when a NPC is spawned via a NPC spawner
-* (void)RustEdit_APCSpawned(BradleyAPC) - Called when a APC is spawned on a custom APC path
+```csharp 
+(void)RustEdit_NpcSpawned(BasePlayer) // Called when a NPC is spawned via a NPC spawner
+(void)RustEdit_APCSpawned(BradleyAPC) // Called when a APC is spawned on a custom APC path
+```
 
 **API**
-* (void)GetAllMapEntities(ref List<BaseEntity> list) - Populates the list with all map placed entities
-* (void)GetMapEntitiesOfType<T>(ref List<T> list) - Populates the list with all map placed entities of the specified type (that inherit from BaseEntity)
-* (void)GetActiveNPCs(ref List<BaseCombatEntity> list) - Populates the list with all active NPC's spawn via NPC Spawners
-* (void)GetActiveAPCs(ref List<BradleyAPC> list) - Populates the list with all active APC's on custom APC paths
-* (void)GetSpawnpoints(ref List<Transform> list) - Populates the list with Transform components of all editor placed spawn points
+```csharp
+(void)GetAllMapEntities(ref List<BaseEntity> list) // Populates the list with all map placed entities
+(void)GetMapEntitiesOfType<T>(ref List<T> list) // Populates the list with all map placed entities of the specified type (that inherit from BaseEntity)
+(void)GetActiveNPCs(ref List<BaseCombatEntity> list) // Populates the list with all active NPC's spawn via NPC Spawners
+(void)GetActiveAPCs(ref List<BradleyAPC> list) // Populates the list with all active APC's on custom APC paths
+(void)GetSpawnpoints(ref List<Transform> list) // Populates the list with Transform components of all editor placed spawn points
+```
