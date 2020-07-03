@@ -52,7 +52,7 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * rustedit.update - Manually runs the updater if you have automatic updates disabled
 
 **Config**
-* The RustEdit extensions config can be found in your default config directory where all your plugin configs are located.
+* The RustEdit extensions config can be found in your config directory where all your plugin configs are located (/oxide/config/RustEdit.json).
 
 The config allows you to toggle certain features on/off
 
