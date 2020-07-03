@@ -49,6 +49,27 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * rustedit.junkpile.respawnall - Force spawn all junk piles pending respawn
 * rustedit.junkpile.info - Display a count of all map junk piles and their status
 * rustedit.desk.populate - Force respawn any keycards missing from keycard desks
+* rustedit.update - Manually runs the updater if you have automatic updates disabled
+
+**Config**
+* The RustEdit extensions config can be found in your default config directory where all your plugin configs are located.
+
+The config allows you to toggle certain features on/off
+
+```csharp
+{
+  "Automatic Updates": {
+    "Enabled": true
+  },
+  "Spawn Handlers": {
+    "Enable loot container spawn handlers": true,
+    "Enable resource spawn handlers": true,
+    "Enable NPC spawn handlers": true,
+    "Enable APC spawn handlers": true
+  }
+}
+```
+
 
 **Hooks**
 ```csharp 
