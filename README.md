@@ -49,7 +49,8 @@ Copy the Oxide.Ext.RustEdit.dll to your */serverroot/RustDedicated_Data/Managed*
 * rustedit.junkpile.respawnall - Force spawn all junk piles pending respawn
 * rustedit.junkpile.info - Display a count of all map junk piles and their status
 * rustedit.desk.populate - Force respawn any keycards missing from keycard desks
-* rustedit.update - Manually runs the updater if you have automatic updates disabled
+* rustedit.checkupdate - Check for new extension updates
+* rustedit.downloadupdate - Download latest extension release
 
 **Config**
 * The RustEdit extensions config can be found in your config directory where all your plugin configs are located (/oxide/config/RustEdit.json).
