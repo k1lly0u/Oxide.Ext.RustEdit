@@ -60,17 +60,89 @@ The config allows you to toggle certain features on/off
 ```csharp
 {
   "Automatic Updates": {
-    "Enabled": true
+    "Enabled": false
   },
-  "Spawn Handlers": {
-    "Enable loot container spawn handlers": true,
-    "Enable resource spawn handlers": true,
-    "Enable NPC spawn handlers": true,
-    "Enable APC spawn handlers": true
+  "RustEdit 1 Maps": {
+    "Spawn Handlers": {
+      "Enable loot container spawn handlers": true,
+      "Enable resource spawn handlers": true,
+      "Enable NPC spawn handlers": true,
+      "Enable APC spawn handlers": true
+    },
+    "Respawn Times": {
+      "Default loot containers": {
+        "Minimum (minutes)": 30,
+        "Maximum (minutes)": 60
+      },
+      "Desk keycard": {
+        "Minimum (minutes)": 15,
+        "Maximum (minutes)": 20
+      },
+      "Diesel Collectable": {
+        "Minimum (minutes)": 30,
+        "Maximum (minutes)": 45
+      },
+      "Junk piles": {
+        "Minimum (minutes)": 20,
+        "Maximum (minutes)": 45
+      },
+      "Resources": {
+        "Minimum (minutes)": 20,
+        "Maximum (minutes)": 45
+      },
+      "Traps/Barricades (Respawn/Re-Arm)": {
+        "Minimum (minutes)": 25,
+        "Maximum (minutes)": 40
+      },
+      "Vehicles": {
+        "Minimum (minutes)": 45,
+        "Maximum (minutes)": 60
+      }
+    }
+  },
+  "RustEdit 2 Maps": {
+    "Map keys (MapName | Encryption Key) Use * as the name to work on any map": {
+      "*": "encryptionkey",
+      "mapname": "encryptionkey"
+    },
+    "Stop the server when the map key is missing or wrong. If false, the server will load without any RustEdit data": false,
+    "Spawn Handlers": {
+      "Enable loot container spawn handlers": true,
+      "Enable resource spawn handlers": true,
+      "Enable NPC spawn handlers": true,
+      "Enable APC spawn handlers": true
+    },
+    "Respawn Times (when the map sets none)": {
+      "Default loot containers": {
+        "Minimum (minutes)": 30,
+        "Maximum (minutes)": 60
+      },
+      "Resources": {
+        "Minimum (minutes)": 20,
+        "Maximum (minutes)": 45
+      },
+      "Junk piles": {
+        "Minimum (minutes)": 20,
+        "Maximum (minutes)": 45
+      },
+      "Traps/Barricades (Respawn/Re-Arm)": {
+        "Minimum (minutes)": 25,
+        "Maximum (minutes)": 40
+      }
+    }
+  },
+  "Version": {
+    "Major": 2,
+    "Minor": 0,
+    "Patch": 0
   }
 }
 ```
 
+# RustEdit 2 Maps
+[See the RustEdit2 Docs](https://rustedit.rusthq.com/maps/server-extension)
+
+# RustEdit 1 Maps
 
 **Hooks**
 ```csharp 
