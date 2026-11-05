@@ -1,0 +1,85 @@
+name: Discord release post
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag of the release to post again, such as 2.0.4
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          node - <<'SCRIPT'
+          const fs = require('fs');
+
+          (async () => {
+            const webhook = (process.env.DISCORD_WEBHOOK_URL || '').trim();
+            if (!webhook) {
+              console.log('::warning::The DISCORD_WEBHOOK_URL secret is not set: nothing was posted');
+              return;
+            }
+
+            let release;
+            if (process.env.GITHUB_EVENT_NAME === 'release') {
+              release = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')).release;
+            } else {
+              const tag = encodeURIComponent(process.env.TAG || '');
+              const api = `${process.env.GITHUB_API_URL || 'https://api.github.com'}/repos/${process.env.GITHUB_REPOSITORY}/releases/tags/${tag}`;
+              const headers = { accept: 'application/vnd.github+json' };
+              if (process.env.GITHUB_TOKEN)
+                headers.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+
+              const found = await fetch(api, { headers });
+              if (!found.ok) {
+                console.log(`::error::No release has the tag ${process.env.TAG} (${found.status})`);
+                process.exitCode = 1;
+                return;
+              }
+              release = await found.json();
+            }
+
+            const version = String(release.tag_name || release.name || '').replace(/^v/i, '');
+            const branch = release.prerelease ? 'Server Extension Beta' : 'Server Extension';
+            const head = `**${branch}** v${version}\n\`\`\`\n`;
+            const tail = '\n```';
+
+            let notes = String(release.body || '').replace(/\r\n/g, '\n').trim().split('```').join('`\u200B`\u200B`');
+            if (!notes)
+              notes = 'No patch notes';
+
+            const room = 4096 - head.length - tail.length;
+            if (notes.length > room)
+              notes = notes.slice(0, room - 4).trimEnd() + '\n...';
+
+            const payload = {
+              embeds: [{ description: head + notes + tail, color: release.prerelease ? 0xF2A93B : 0x43B581 }]
+            };
+
+            const url = webhook + (webhook.includes('?') ? '&' : '?') + 'wait=true';
+            const posted = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
+            if (!posted.ok) {
+              const answer = await posted.text();
+              console.log(`::error::Discord did not post it (${posted.status}): ${answer.slice(0, 200)}`);
+              process.exitCode = 1;
+              return;
+            }
+
+            console.log(`Posted to Discord: ${branch} v${version}`);
+          })().catch(e => {
+            console.log(`::error::${e.message}`);
+            process.exitCode = 1;
+          });
+          SCRIPT
